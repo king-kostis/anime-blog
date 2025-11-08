@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime News Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-blue-300 to-red-300 min-h-screen text-black">
+
+    <nav class="bg-white p-4 md:flex md:items-center md:justify-between">
+        <div class="">
+                        <span class="flex justify-between items-center mx-2 font-bold text-xl">
+                            <img src=""  alt="Main image">Anime News
+                        </span>
+
+            <!-- <span>
+            </span> -->
+
+        </div>
+        <ul class="ul-list md:flex md:items-center">
+            <li class="mx-4 my-6 md:my-0"><a class="text-xl hover:text-blue-500 duration-500" th:href="@{/blog/posts}">Home</a></li>
+            <li class="mx-4 my-6 md:my-0"><a class="text-xl hover:text-blue-500 duration-500" th:href="@{/blog/about}">About</a></li>
+            <li class="mx-4 my-6 md:my-0"><a class="text-xl hover:text-blue-500 duration-500" th:href="@{#}">Contact</a></li>
+        </ul>
+    </nav>
+
+    <form th:object="${email}" th:action="@{email/sendEmail}" method="post">
+        <fieldset>
+            <legend><h2>Contact Me</h2></legend>
+        </fieldset>
+        <label for="address">Enter your email</label>
+        <input type="email" id="address" th:field="*{emailAddress}" placeholder="eg. myEmail@gmail.com" required>
+            <br>
+        <label for="subject">Enter the subject</label>
+        <input type="text" id="subject" th:field="*{subject}" required>
+            <br>
+        <label for="message">Enter the message</label>
+        <textarea id="message" th:field="*{message}" rows="10" cols="30" required></textarea>
+            <br>
+        <button type="submit">Submit</button>
+    </form>
+    <div>
+    </div>
+</body>
+</html>
