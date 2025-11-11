@@ -31,8 +31,6 @@ public class EmailController {
             logger.info("Error: " + e.getMessage() + "\n"+ Arrays.toString(e.getStackTrace()));
             return "redirect:/blog/error";
         }
-
-
         return "redirect:/blog/contact";
     }
 
