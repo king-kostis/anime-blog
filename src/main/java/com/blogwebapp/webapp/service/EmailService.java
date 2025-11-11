@@ -1,5 +1,7 @@
 package com.blogwebapp.webapp.service;
 import com.blogwebapp.webapp.model.EmailDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -8,24 +10,30 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailService {
 
-    private JavaMailSender mailSender;
+    private static final Logger logger = LoggerFactory.getLogger(EmailService.class);
+    private final JavaMailSender mailSender;
 
-    @Value("spring.mail.username")
-    private String toMail;
+    @Value("${spring.mail.username}")
+    private String senderAddress;
+
+    @Value("${app.mail.receiver}")
+    private String receiverAddress;
 
     public EmailService(JavaMailSender mailSender){
         this.mailSender = mailSender;
     }
 
-
-
-    public void sendMail(EmailDto emailDto){
+    public void sendMail(EmailDto emailDto) throws Exception {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
-        simpleMailMessage.setFrom(emailDto.getEmailAddress());
+        logger.info("Setting email sender address " + senderAddress);
+        simpleMailMessage.setFrom(senderAddress);
+        logger.info("Setting email subject " + emailDto.getSubject());
         simpleMailMessage.setSubject(emailDto.getSubject());
-        simpleMailMessage.setText(emailDto.getMessage());
-        simpleMailMessage.setTo(toMail);
+        logger.info("Setting email body " + emailDto);
+        simpleMailMessage.setText(emailDto.toString());
+        logger.info("Setting email recipient address " + receiverAddress);
+        simpleMailMessage.setTo(receiverAddress);
 
         mailSender.send(simpleMailMessage);
     }
