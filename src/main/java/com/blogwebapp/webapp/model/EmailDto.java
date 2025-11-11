@@ -15,7 +15,6 @@ public class EmailDto{
     private String subject;
 
     @NotBlank(message = "Email message is mandatory")
-    @Size(min=10, max=60, message = "Email message should be at least 10 characters and at most 60 characters")
     private String message;
 
     public EmailDto() {}

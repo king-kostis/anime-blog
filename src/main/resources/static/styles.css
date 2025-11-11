@@ -1,7 +1,12 @@
 body {
     background-image: url('../images/cover_image.jpg');
-    height: 100vh;
+    min-height: 100vh;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
+}
+
+body,html {
+    margin: 0;
+    padding: 0;
 }

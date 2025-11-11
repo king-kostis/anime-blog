@@ -8,11 +8,12 @@
     <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
-    <nav class="bg-white p-4 md:flex md:items-center md:justify-between">
+    <nav class="bg-black bg-opacity-70 text-white rounded-b p-3 md:flex md:items-center md:justify-between">
         <div class="">
-                                <span class="flex justify-between items-center mx-2 font-bold text-lg">
-                                    <img src=""  alt="Main image">Anime News
-                                </span>
+                    <div  class="flex justify-between items-center mx-2 font-bold text-4xl">
+                        <img class="rounded-full mr-4 w-12 h-12" th:src="@{/images/page_profile.jpg}"  alt="Main image">
+                        <span> <h1 style="font-family: 'Copperplate Gothic', Copperplate, fantasy, serif;" class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">Anime News</h1></span>
+                    </div>
 
             <!-- <span>
             </span> -->
@@ -25,16 +26,17 @@
         </ul>
     </nav>
 
-    <div class="min-w-screen flex items-center justify-center bg-gradient-to-b from-blue-300/50 to-red-300/50 min-h-screen">
-        <div class="rounded text-sm px-6 py-4 shadow-2xl">
+    <div class="w-screen flex items-center justify-center bg-gradient-to-b from-blue-300/50 to-red-300/50 min-h-screen">
+        <div class="rounded text-sm px-6 py-4 shadow-2xl bg-gradient-to-b from-blue-300/75 to-red-300/75">
             <form th:object="${email}" th:action="@{sendEmail}" method="post">
                 <div class="font-bold text-xl mb02">Contact Me</div>
+                <br>
                 <label for="address">Enter email</label>
                 <input type="email" id="address" class="rounded px-2 py-1 flex shadow-xl" th:field="*{emailAddress}" placeholder="eg. myEmail@gmail.com" required>
-                    <br>
+                <br>
                 <label for="subject">Enter subject</label>
                 <input type="text" id="subject" class="rounded flex px-2 py-1 shadow-xl" th:field="*{subject}" required>
-                    <br>
+                <br>
                 <label for="message">Enter message</label>
                 <textarea id="message" class="rounded flex px-2 py-1 shadow-xl" th:field="*{message}" rows="10" cols="30" required></textarea>
                 <br>
