@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/blog")
+@RequestMapping("/email")
 public class EmailController {
     private final EmailService emailService;
     private static final Logger logger = LoggerFactory.getLogger(EmailController.class);
@@ -30,10 +30,5 @@ public class EmailController {
             return "redirect:/blog/contact?error";
         }
         return "redirect:/blog/contact?success";
-    }
-
-    @GetMapping("/error")
-    public String error(){
-        return "error";
     }
 }
