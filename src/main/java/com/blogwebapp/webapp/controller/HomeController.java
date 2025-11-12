@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/blog")
-public class PostController {
+public class HomeController {
     @GetMapping("/posts")
     public String getPosts(){
         return "home";

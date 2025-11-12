@@ -1,4 +1,4 @@
 package com.blogwebapp.webapp.model;
 
-public class Post {
+public class Feed {
 }

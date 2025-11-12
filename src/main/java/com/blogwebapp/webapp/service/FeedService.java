@@ -1,4 +1,4 @@
 package com.blogwebapp.webapp.service;
 
-public class PostService {
+public class FeedService {
 }

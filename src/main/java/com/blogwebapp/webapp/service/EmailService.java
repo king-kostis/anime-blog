@@ -42,6 +42,5 @@ public class EmailService {
         mailSender.send(simpleMailMessage);
 
         logger.info("Email sent from {} to {} ",senderAddress, receiverAddress);
-        emailDto.setIsSent(true);
     }
 }
