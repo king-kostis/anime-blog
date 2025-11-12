@@ -1,4 +1,5 @@
 package com.blogwebapp.webapp.service;
+
 import com.blogwebapp.webapp.model.EmailDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +41,7 @@ public class EmailService {
         logger.info("Sending email to Gmail Client");
         mailSender.send(simpleMailMessage);
 
+        logger.info("Email sent from {} to {} ",senderAddress, receiverAddress);
         emailDto.setIsSent(true);
     }
 }

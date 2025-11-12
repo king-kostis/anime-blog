@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Arrays;
-
 @Controller
 @RequestMapping("/blog")
 public class EmailController {
@@ -25,16 +23,13 @@ public class EmailController {
 
     @PostMapping("/sendEmail")
     public String sendEmail(@Valid @ModelAttribute("email") EmailDto email){
-        if(email.getEmailAddress().isEmpty() || email.getSubject().isEmpty() || email.getMessage().isEmpty()) {
-            return "redirect:/blog/contact";
-        }
         try {
             emailService.sendMail(email);
         } catch (Exception e){
-            logger.info("Error: " + e.getMessage() + "\n"+ Arrays.toString(e.getStackTrace()));
-            return "redirect:/blog/error";
+            logger.error("Error: " + e.getMessage());
+            return "redirect:/blog/contact?error";
         }
-        return "redirect:/blog/contact";
+        return "redirect:/blog/contact?success";
     }
 
     @GetMapping("/error")
