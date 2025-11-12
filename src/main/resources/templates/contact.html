@@ -6,49 +6,82 @@
     <title>Anime News Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" th:href="@{/styles.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <nav class="bg-black bg-opacity-70 text-white rounded-b p-3 md:flex md:items-center md:justify-between">
-        <div class="">
-                    <div  class="flex justify-between items-center mx-2 font-bold text-4xl">
-                        <img class="rounded-full mr-4 w-12 h-12" th:src="@{/images/page_profile.jpg}"  alt="Main image">
-                        <span> <h1 style="font-family: 'Copperplate Gothic', Copperplate, fantasy, serif;" class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">Anime News</h1></span>
-                    </div>
+    <div class="bg-red-300/50">
+        <nav class="bg-black bg-opacity-70 text-white rounded-b p-3">
+            <div class="md:flex items-center justify-between">
+                <div class="flex items-center justify-between mx-2 font-bold">
+                    <img class="hover:scale-105 hover:cursor-pointer transition duration-300 ease-in-out rounded-full mr-4 w-12 h-12" th:src="@{/images/page_profile.jpg}"  alt="anime profile picture">
+                    <span> <h1 style="font-family: 'Copperplate Gothic', Copperplate, fantasy, serif;"
+                               class="hover:scale-105 transition duration-300 ease-in-out hover:cursor-pointer
+                               text-4xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+                        Anime News
+                    </h1></span>
 
-            <!-- <span>
-            </span> -->
 
-        </div>
-        <ul class="ul-list md:flex md:items-center">
-            <li class="mx-4 my-6 md:my-0"><a class="text-lg hover:text-blue-500 hover:cursor-pointer duration-500" th:href="@{/blog/posts}">Home</a></li>
-            <li class="mx-4 my-6 md:my-0"><a class="text-lg hover:text-blue-500 hover:cursor-pointer duration-500" th:href="@{/blog/about}">About</a></li>
-            <li class="mx-4 my-6 md:my-0"><a class="text-lg hover:text-blue-500 hover:cursor-pointer duration-500" th:href="@{#}">Contact</a></li>
-        </ul>
-    </nav>
-
-    <div class="w-screen flex items-center justify-center bg-gradient-to-b from-blue-300/50 to-red-300/50 min-h-screen">
-        <div class="rounded text-sm px-6 py-4 shadow-2xl bg-gradient-to-b from-blue-300/75 to-red-300/75">
-            <form th:object="${email}" th:action="@{sendEmail}" method="post">
-                <div class="font-bold text-xl mb02">Contact Me</div>
-                <br>
-                <label for="address">Enter email</label>
-                <input type="email" id="address" class="rounded px-2 py-1 flex shadow-xl" th:field="*{emailAddress}" placeholder="eg. myEmail@gmail.com" required>
-                <br>
-                <label for="subject">Enter subject</label>
-                <input type="text" id="subject" class="rounded flex px-2 py-1 shadow-xl" th:field="*{subject}" required>
-                <br>
-                <label for="message">Enter message</label>
-                <textarea id="message" class="rounded flex px-2 py-1 shadow-xl" th:field="*{message}" rows="10" cols="30" required></textarea>
-                <br>
-
-                <div class="justify-center items-center max-w">
-                    <div class="rounded-full w-fit text-white px-3 py-1 bg-black shadow-lg flex justify-center">
-                        <button  type="submit">Submit</button>
+                    <div class="md:hidden flex-cols ml-3">
+                        <button id="menuBtn">
+                            <i class="fas fa-bars"></i>
+                        </button>
                     </div>
                 </div>
 
-            </form>
+                <ul id="menu" class="md:flex hidden mt-0 ">
+                    <li class="mx-4 my-6 md:my-0"><a class="text-lg hover:text-blue-500 hover:cursor-pointer duration-500" th:href="@{/blog/posts}">Home</a></li>
+                    <li class="mx-4 my-6 md:my-0"><a class="text-lg hover:text-blue-500 hover:cursor-pointer duration-500" th:href="@{/blog/about}">About</a></li>
+                    <li class="mx-4 my-6 md:my-0"><a class="text-lg hover:text-blue-500 hover:cursor-pointer duration-500" th:href="@{#}">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="flex items-center min-h-screen justify-center py-6 px-6">
+            <div class="rounded-lg text-sm px-6 py-6 shadow-2xl bg-gradient-to-b from-blue-300/75 to-red-300/75">
+                <form th:object="${email}" th:action="@{sendEmail}" method="post">
+                    <div class="font-bold text-xl mb02">Contact Me</div>
+                    <br>
+                    <label for="address">Enter email</label>
+                    <input type="email" id="address" class="rounded px-2 py-1 flex shadow-xl" th:field="*{emailAddress}" placeholder="eg. myEmail@gmail.com" required>
+                    <br>
+                    <label for="subject">Enter subject</label>
+                    <input type="text" id="subject" class="rounded flex px-2 py-1 shadow-xl" th:field="*{subject}" required>
+                    <br>
+                    <label for="message">Enter message</label>
+                    <textarea id="message" class="rounded flex px-2 py-1 shadow-xl" th:field="*{message}" rows="10" cols="30" required></textarea>
+                    <br>
+
+                    <div class="rounded-full w-fit text-white px-3 py-1 bg-black shadow-lg">
+                        <button  type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
+        <footer class="bg-black bg-opacity-80 text-white my-0 py-6 mt-10">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+
+                <p class="text-sm mb-3 md:mb-0">
+                    &copy; 2025 <span class="text-pink-400 font-semibold">Anime News</span>. All rights reserved.
+                </p>
+
+
+                <div class="flex space-x-4 text-lg">
+                    <a href="#" class="hover:text-pink-400"><i class="fab fa-github"></i></a>
+                    <a href="#" class="hover:text-pink-400"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </footer>
     </div>
+    <script>
+        const menu = document.getElementById('menu');
+        const btn = document.getElementById('menuBtn');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+
+
+
 </body>
 </html>

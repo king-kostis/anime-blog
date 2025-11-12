@@ -5,24 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime News Blog</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="bg-gradient-to-b from-blue-300 to-red-300 min-h-screen text-black">
+<body>
+<div class="bg-red-300/50">
+    <nav class="bg-black bg-opacity-70 text-white rounded-b p-3">
+        <div class="md:flex items-center justify-between">
+            <div class="flex items-center justify-between mx-2 font-bold">
+                <img class="hover:scale-105 hover:cursor-pointer transition duration-300 ease-in-out rounded-full mr-4 w-12 h-12" th:src="@{/images/page_profile.jpg}"  alt="anime profile picture">
+                <span> <h1 style="font-family: 'Copperplate Gothic', Copperplate, fantasy, serif;"
+                           class="hover:scale-105 transition duration-300 ease-in-out hover:cursor-pointer
+                               text-4xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+                        Anime News
+                    </h1></span>
 
-<nav class="bg-white p-4 md:flex md:items-center md:justify-between">
-    <div class="">
-                    <span class="flex justify-between items-center mx-2 font-bold text-xl">
-                        <img src=""  alt="Main image">Anime News
-                    </span>
 
-        <!-- <span>
-        </span> -->
-    </div>
-    <ul class="ul-list md:flex md:items-center">
-        <li class="mx-4 my-6 md:my-0"><a class="text-xl hover:text-blue-500 duration-500" th:href="@{/blog/posts}">Home</a></li>
-        <li class="mx-4 my-6 md:my-0"><a class="text-xl hover:text-blue-500 duration-500" th:href="@{#}">About</a></li>
-        <li class="mx-4 my-6 md:my-0"><a class="text-xl hover:text-blue-500 duration-500" th:href="@{/blog/contact}">Contact</a></li>
-    </ul>
-</nav>
+                <div class="md:hidden flex-cols ml-3">
+                    <button id="menuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <ul id="menu" class="md:flex hidden mt-0 ">
+                <li class="mx-4 my-6 md:my-0"><a class="text-lg hover:text-blue-500 hover:cursor-pointer duration-500" th:href="@{/blog/posts}">Home</a></li>
+                <li class="mx-4 my-6 md:my-0"><a class="text-lg hover:text-blue-500 hover:cursor-pointer duration-500" th:href="@{/blog/about}">About</a></li>
+                <li class="mx-4 my-6 md:my-0"><a class="text-lg hover:text-blue-500 hover:cursor-pointer duration-500" th:href="@{/blog/contact}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <footer class="bg-black bg-opacity-80 text-white my-0 py-6 mt-10">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+
+            <p class="text-sm mb-3 md:mb-0">
+                &copy; 2025 <span class="text-pink-400 font-semibold">Anime News</span>. All rights reserved.
+            </p>
+
+
+            <div class="flex space-x-4 text-lg">
+                <a href="#" class="hover:text-pink-400"><i class="fab fa-github"></i></a>
+                <a href="#" class="hover:text-pink-400"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+</div>
+<script>
+    const menu = document.getElementById('menu');
+    const btn = document.getElementById('menuBtn');
+
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
+</script>
+
+
 
 </body>
 </html>
