@@ -25,6 +25,9 @@ public class EmailController {
 
     @PostMapping("/sendEmail")
     public String sendEmail(@Valid @ModelAttribute("email") EmailDto email){
+        if(email.getEmailAddress().isEmpty() || email.getSubject().isEmpty() || email.getMessage().isEmpty()) {
+            return "redirect:/blog/contact";
+        }
         try {
             emailService.sendMail(email);
         } catch (Exception e){

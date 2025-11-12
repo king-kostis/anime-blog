@@ -28,13 +28,18 @@ public class EmailService {
 
         logger.info("Setting email sender address " + senderAddress);
         simpleMailMessage.setFrom(senderAddress);
+
         logger.info("Setting email subject " + emailDto.getSubject());
         simpleMailMessage.setSubject(emailDto.getSubject());
+
         logger.info("Setting email body " + emailDto);
         simpleMailMessage.setText(emailDto.toString());
         logger.info("Setting email recipient address " + receiverAddress);
         simpleMailMessage.setTo(receiverAddress);
 
+        logger.info("Sending email to Gmail Client");
         mailSender.send(simpleMailMessage);
+
+        emailDto.setIsSent(true);
     }
 }

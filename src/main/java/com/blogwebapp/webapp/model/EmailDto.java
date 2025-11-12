@@ -1,5 +1,6 @@
 package com.blogwebapp.webapp.model;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -17,12 +18,15 @@ public class EmailDto{
     @NotBlank(message = "Email message is mandatory")
     private String message;
 
+    private boolean isSent;
+
     public EmailDto() {}
 
-    public EmailDto(String emailAddress, String subject, String message){
+    public EmailDto(String emailAddress, String subject, String message, boolean isSent){
         this.emailAddress = emailAddress;
         this.subject = subject;
         this.message = message;
+        this.isSent = false;
     }
 
     public String getEmailAddress() {
@@ -47,6 +51,14 @@ public class EmailDto{
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public boolean isSent() {
+        return isSent;
+    }
+
+    public void setIsSent(boolean isSent) {
+        this.isSent = isSent;
     }
 
     @Override

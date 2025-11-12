@@ -21,7 +21,7 @@ public class PostController {
     }
 
     @GetMapping("/contact")
-    public String getContact(@Valid Model model){
+    public String getContact(Model model){
         model.addAttribute("email", new EmailDto());
         return "contact";
     }
