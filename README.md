@@ -88,7 +88,7 @@ rss.feed.url = yourRssFeedUrl.xml
 
 ### 4. Build and run the app
 > Make sure you have maven installed or have its binaries path as a <em>PATH<em> variable.
-> The app runs on port 8080.
+> The app runs on port 3000. You can change it in the application.properties file.
 
 ```bash
 mvn clean install
