@@ -10,8 +10,8 @@ A blog website that displays anime news from a telegram channel using RSS feeds
 ## Features
 - Streams telegram posts from an anime news channel as rss feeds displays them
 - Allows users to send emails to the host of the website through it
-- Stores rss feed into a text file for persistence
-- Loads feeds from text file after persistence
+- Persists rss feed into a text file for offline use
+- Reloads feeds data automatically from saved file
 
 ---
 
@@ -24,13 +24,21 @@ A blog website that displays anime news from a telegram channel using RSS feeds
 
 ## Setup & Installation
 > [!NOTE]
-> - To receive emails from the app you first have to have <b>two google accounts</b> for this to work.<br><br>
-> - One of the accounts should have an <b>App Password</b> which you can generate for your google account [here](https://myaccount.google.com/apppasswords).<br><br>
-> - For more info or a guide on google app passswords you can check [here](https://support.google.com/mail/answer/185833?hl=en).<br><br>
-> - Once the password is generated for whatever account you used, use it as the value for your <em>MAIL_PASSWORD</em> environment variable and use the gmail account you used to generate it as your <em>MAIL_USERNAME</em> value.<br><br>
-> - Now you can use whatever personal email you have to receive the emails, hence it would be your <em>MAIL_RECEIVE</em> value.<br><br>
-> - Sorry for the excessive steps but due to smtp is, I wanted to avoid any robust authenticatication for this small web app so I chose this round about way of sending emails the users of the app write to my self.<br><br>
-> - So with these cautions in mind you can proceed with the installation.
+> - You’ll need two Gmail accounts, preferrably of your own, to enable the email feature.
+> - One will act as the sender, and the other will receive messages.
+> - You’ll also need to generate a Google App Password for the sender account.
+> - For more info or a guide on google app passswords you can check [here](https://support.google.com/mail/answer/185833?hl=en).
+<br
+
+## Google App Password Setup
+- Generate your google app password [here](https://myaccount.google.com/apppasswords).<br><br>
+- Set your gmail account as <em>MAIL_USERNAME</em> and the generated password as <em>MAIL_PASSWORD</em> as environment variables.<br><br>
+- Set your personal email (the one you want to receive messages with) as <em>MAIL_RECEIVE</em><br>
+
+<br>
+
+> I chose this setup to avoid the complexity of OAUTH authentication since this is a simple web app.
+> So with these steps done you can now proceed with the installation.
 
 <br>
 
@@ -39,7 +47,7 @@ A blog website that displays anime news from a telegram channel using RSS feeds
 ### 2. Clone the repository
 ```bash
 git clone https://github.com/king-kostis/anime-blog.git
-cd webapp
+cd anime-blog
 ```
 
 ### 3. Set environment variables
