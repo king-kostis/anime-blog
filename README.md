@@ -1,6 +1,6 @@
 <h1 align="center">ANIME NEWS BLOG</h1>
 
-![alt text](/src/main/resources/static/images/website.png?raw=true)
+![website_image](/src/main/resources/static/images/website.png?raw=true)
 
 A blog website that displays anime news from a telegram channel using RSS feeds
 > This is my first ever full stack application so please pardon the messy code and architecture
@@ -37,7 +37,7 @@ A blog website that displays anime news from a telegram channel using RSS feeds
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/king-kostis/anime-blog.git
-cd anime-blog
+cd webapp
 ```
 
 ### 2. Set environment variables
