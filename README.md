@@ -45,10 +45,10 @@ cd anime-blog
 ```
 
 > [!NOTE]
-> Some ISPs may be strict with TLS connection requests(from your port 587) so use 465 to be safe.<br>
-> If you still want to use port 587, set "spring.mail.properties.mail.smtp.starttls.enable" to "true"<br>
-> in your application.properties file.
-> Then remove "spring.mail.properties.mail.smtp.ssl.enable=true"
+> Some ISPs may be strict with TLS connection requests(from your port 587) so use 465 to be safe.<br><br>
+> If you still want to use port 587, set "<b><em>spring.mail.properties.mail.smtp.starttls.enable</em></b>" to "<b><em>true</em></b>"<br>
+> in your <b>application.properties</b> file.<br><br>
+> Then remove "<b><em>spring.mail.properties.mail.smtp.ssl.enable=true<em></b>".
 
 ### 2. Set environment variables
 
