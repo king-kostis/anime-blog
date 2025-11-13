@@ -28,7 +28,7 @@ A blog website that displays anime news from a telegram channel using RSS feeds
 > - One will act as the sender, and the other will receive messages.
 > - You’ll also need to generate a Google App Password for the sender account.
 > - For more info or a guide on google app passswords you can check [here](https://support.google.com/mail/answer/185833?hl=en).
-<br
+<br>
 
 ## Google App Password Setup
 - Generate your google app password [here](https://myaccount.google.com/apppasswords).
