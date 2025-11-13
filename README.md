@@ -3,7 +3,7 @@
 ![website_image](/src/main/resources/static/images/website.png?raw=true)
 
 A blog website that displays anime news from a telegram channel using RSS feeds
-> This is my first ever full stack application so please pardon the messy code and architecture
+> This is my first ever full stack application so please pardon my architectural choices
 
 ---
 
