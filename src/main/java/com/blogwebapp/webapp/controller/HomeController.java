@@ -23,7 +23,6 @@ public class HomeController {
     public String getPosts(Model model){
         if(feedService.getFeeds().isEmpty()) {
             try {
-                logger.info("Storing feeds");
                 feedService.storeFeeds();
                 logger.info("Loading feeds");
                 feedService.loadFeeds();

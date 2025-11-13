@@ -17,6 +17,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -25,6 +26,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class FeedService {
@@ -33,7 +36,7 @@ public class FeedService {
     private final String file = "feeds/feeds.txt";
     private final Path filePath = Paths.get(file);
     private final List<Feed> feeds;
-
+    private String imageUrl;
     @Value("${rss.feed.url}")
     private String feedUrlStr;
 
@@ -45,13 +48,17 @@ public class FeedService {
         return feeds;
     }
 
+    //Stores rss feeds for persistence
     public void storeFeeds() throws Exception {
         URL feedUrl = new URL(feedUrlStr);
         String feedsContent = restTemplate.getForObject(feedUrlStr, String.class);
+
         try {
             logger.info("Checking if {} exists",filePath);
             Files.createDirectories(filePath.getParent());
-            logger.info("Storing feeds");
+            logger.info("Fetching and storing feeds");
+
+            //Overwrites data in the file after every save
             Files.writeString(filePath, feedsContent, StandardCharsets.UTF_8, StandardOpenOption.CREATE,
                     StandardOpenOption.TRUNCATE_EXISTING);
             logger.info("Feeds stored successfully \n {}", feedsContent);
@@ -63,22 +70,22 @@ public class FeedService {
 
     public void loadFeeds(){
         try {
+            //Loads feed from feeds file
             String content = Files.readString(filePath, StandardCharsets.UTF_8); //reads contents from file
 
-            logger.info("Instantiating document builder factory");
+            logger.debug("Instantiating document builder factory");
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-            logger.info("Parsing text to xml content");
-            // Parse from string by wrapping it in InputSource
+            logger.debug("Parsing text to xml content");
             InputSource inputSource = new InputSource(new StringReader(content));
             Document doc = builder.parse(inputSource);
 
             //Normalizes xml content
             doc.getDocumentElement().normalize();
 
-            logger.info("Assigning item fields from xml file");
-            logger.info("Creating feed objects");
+            logger.debug("Assigning item fields from xml file");
+            logger.debug("Creating feed objects");
             //iterates through feed items in xml file
             NodeList items = doc.getElementsByTagName("item"); // typical for RSS
             for (int i = 0; i < items.getLength(); i++) {
@@ -87,23 +94,49 @@ public class FeedService {
                     Element element = (Element) item;
                     String title = element.getElementsByTagName("title").item(0).getTextContent();
                     String link = element.getElementsByTagName("link").item(0).getTextContent();
-                    String description = element.getElementsByTagName("description").item(0).getTextContent();
-                    description =description.replaceAll(
-                            "<img\\s+[^>]*src\\s*=\\s*['\"](\\s*|null|https://rss\\.app/transparent\\.png)['\"][^>]*>",
-                            "");
-
-                    description = description.replaceAll(
-                            "<img[^>]*(width\\s*=\\s*['\"]?1['\"]?|height\\s*=\\s*['\"]?1['\"]?)[^>]*>",
-                            "");
                     String pubDate = element.getElementsByTagName("pubDate").item(0).getTextContent();
+                    String description = element.getElementsByTagName("description").item(0).getTextContent();
+
+                    //This is to extract the image url from the description field using regex matcher
+                    Pattern imgPattern = Pattern.compile("<img[^>]+src=[\"']([^\"']+)[\"']");
+                    Matcher matcher = imgPattern.matcher(description);
+
+                    //Checks for url and assigns it to imageUrl if found
+                    if(matcher.find()) {
+                        String imgUrl = matcher.group(1);
+                        if (!isImageAvailable(imgUrl)) {
+                            // Removes the image tag completely if url is not found or active
+                            description = description.replaceAll("<img[^>]+src=[\"']" + Pattern.quote(imgUrl) + "[\"'][^>]*>", "");
+                        }
+                    }
 
                     Feed feed = new Feed(title, description, pubDate, link);
                     feeds.add(feed);
                 }
             }
+            logger.info("Feeds loaded successfully");
 
         } catch (ParserConfigurationException | SAXException | IOException e){
             logger.error("Error reading file: {} \n {}",e.getMessage(), e.getStackTrace());
+        }
+    }
+
+    //Checks if the image url is active
+    private static boolean isImageAvailable(String urlStr) {
+        try {
+            URL url = new URL(urlStr);
+            logger.info("Establishing connection to image URL ");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("HEAD");
+            logger.info("Connection established. Request has been sent");
+            conn.setConnectTimeout(3000);
+            conn.setReadTimeout(3000);
+            int responseCode = conn.getResponseCode();
+            logger.info("Response code has been retrieved: {}", responseCode);
+            return (responseCode >= 200 && responseCode < 400);
+        } catch (Exception e) {
+            logger.error("Error: {}",e.getMessage());
+            return false;
         }
     }
 }

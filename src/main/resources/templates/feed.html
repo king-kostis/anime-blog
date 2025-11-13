@@ -45,8 +45,8 @@
                 Latest News</h2>
             <hr class="border-t-2 border-gray-300 my-4">
 
-            <div class="my-5 fade-in-section space-y-6" th:each="feed : ${feeds}">
-                <div class="border-b border-gray-300 pb-4">
+            <div class="my-5 space-y-6" th:each="feed : ${feeds}">
+                <div loading="lazy" class="border-b fade-in-section border-gray-300 pb-4">
                     <a th:href="${feed.link}" target="_blank"
                        class="text-blue-600 hover:text-blue-800 font-semibold text-xl block">
                         <span style="font-family: 'Copperplate Gothic', Copperplate, fantasy, serif;" th:text="${feed.title}">Feed Title</span>
