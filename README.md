@@ -31,26 +31,20 @@ A blog website that displays anime news from a telegram channel using RSS feeds
 <br
 
 ## Google App Password Setup
-- Generate your google app password [here](https://myaccount.google.com/apppasswords).<br><br>
-- Set your gmail account as <em>MAIL_USERNAME</em> and the generated password as <em>MAIL_PASSWORD</em> as environment variables.<br><br>
-- Set your personal email (the one you want to receive messages with) as <em>MAIL_RECEIVE</em><br>
-
-<br>
-
+- Generate your google app password [here](https://myaccount.google.com/apppasswords).
+- Set your gmail account as <em>MAIL_USERNAME</em> and the generated password as <em>MAIL_PASSWORD</em> as environment variables.
+- Set your personal email (the one you want to receive messages with) as <em>MAIL_RECEIVE</em>
+  
 > I chose this setup to avoid the complexity of OAUTH authentication since this is a simple web app.
 > So with these steps done you can now proceed with the installation.
 
-<br>
-
-### 1. Fork the repository
-
-### 2. Clone the repository
+### 1. Clone the repository
 ```bash
 git clone https://github.com/king-kostis/anime-blog.git
 cd anime-blog
 ```
 
-### 3. Set environment variables
+### 2. Set environment variables
 
 ### Windows
 For temporary environment variables for testing(Lasts only during terminal session)
@@ -79,7 +73,7 @@ export MAIL_PASSWORD = "yourAppPassword"
 export MAIL_RECEIVE = "receiverEmail"
 ```
 
-### 4. Configure the application properties
+### 3. Configure the application properties
 Open `src/main/resources/application.properties` and set up mail configurations and rss url
 ```properties
 spring.mail.host = ${MAIL_HOST}
@@ -89,10 +83,10 @@ spring.mail.password = ${MAIL_PASSWORD}
 spring.mail.properties.mail.smtp.ssl.enable=true
 spring.mail.properties.mail.smtp.starttls.enable=false
 app.mail.receiver = ${MAIL_RECEIVE}
-rss.feed.url = yourRssFeedUrl.com
+rss.feed.url = yourRssFeedUrl.xml
 ```
 
-### 5. Build and run the app
+### 4. Build and run the app
 > Make sure you have maven installed or have its binaries path as a <em>PATH<em> variable.
 > The app runs on port 8080.
 
