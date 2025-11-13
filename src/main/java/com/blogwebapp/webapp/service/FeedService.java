@@ -51,7 +51,7 @@ public class FeedService {
     //Stores rss feeds for persistence
     public void storeFeeds() throws Exception {
         URL feedUrl = new URL(feedUrlStr);
-        String feedsContent = restTemplate.getForObject(feedUrlStr, String.class);
+        String feedsContent = restTemplate.getForObject(feedUrlStr, String.class);// Parses xml code to string text
 
         try {
             logger.info("Checking if {} exists",filePath);

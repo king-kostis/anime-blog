@@ -39,3 +39,4 @@ const observer = new IntersectionObserver(observerCallback, {
 fadeInElements.forEach(element => {
     observer.observe(element);
 });
+
