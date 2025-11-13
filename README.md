@@ -1,6 +1,6 @@
 # ANIME NEWS BLOG
 
-![alt text](https://github.com/king-kostis/anime-blog/tree/main/src/main/resources/static/images/website.png?raw=true)
+![alt text](/src/main/resources/static/images/website.png?raw=true)
 
 A blog website that displays anime news from a telegram channel using RSS feeds
 > This is my first ever full stack application so please pardon the messy code and architecture
@@ -53,11 +53,11 @@ set MAIL_RECEIVE = receiverEmail
 ```
 For permanent environment variables
 ```bash
-set MAIL_HOST = mailClient.smtp.com
-set MAIL_PORT = 587 or 465
-set MAIL_USERNAME = senderEmail@gmail.com
-set MAIL_PASSWORD = yourAppPassword
-set MAIL_RECEIVE = receiverEmail
+setx MAIL_HOST = mailClient.smtp.com
+setx MAIL_PORT = 587 or 465
+setx MAIL_USERNAME = senderEmail@gmail.com
+setx MAIL_PASSWORD = yourAppPassword
+setx MAIL_RECEIVE = receiverEmail
 ```
 
 ### Linux 
@@ -96,11 +96,10 @@ mvn spring-boot:run
 ---
 
 ## Author
-**${YOUR_NAME}**
-${YOUR_ROLE_OR_TITLE}
-[LinkedIn](https://linkedin.com/in/${LINKEDIN_USERNAME})
+Author Name: **Jesse Quartey** <br>
+[LinkedIn](https://www.linkedin.com/in/jesse-quartey-3777722a5/)
 
 ---
 
-## 📜 License
+## License
 This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
