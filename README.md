@@ -1,4 +1,4 @@
-# ANIME NEWS BLOG
+<h1 align="center">ANIME NEWS BLOG</h1>
 
 ![alt text](/src/main/resources/static/images/website.png?raw=true)
 
