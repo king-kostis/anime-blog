@@ -44,6 +44,12 @@ git clone https://github.com/king-kostis/anime-blog.git
 cd anime-blog
 ```
 
+> [!NOTE]
+> Some ISPs may be strict with TLS connection requests(from your port 587) so use 465 to be safe.<br>
+> If you still want to use port 587, set "spring.mail.properties.mail.smtp.starttls.enable" to "true"<br>
+> in your application.properties file.
+> Then remove "spring.mail.properties.mail.smtp.ssl.enable=true"
+
 ### 2. Set environment variables
 
 ### Windows
@@ -51,7 +57,7 @@ For temporary environment variables for testing(Lasts only during terminal sessi
 ```bash
 set MAIL_HOST = mailClient.smtp.com
 set MAIL_PORT = 587 or 465
-set MAIL_USERNAME = senderEmail@gmail.com
+set MAIL_USERNAME = senderEmail@gmail.com.
 set MAIL_PASSWORD = yourAppPassword
 set MAIL_RECEIVE = receiverEmail
 ```
@@ -67,7 +73,7 @@ setx MAIL_RECEIVE = receiverEmail
 ### Linux 
 ```bash
 export MAIL_HOST = "mailClient.smtp.com"
-export MAIL_PORT = "587" or "465" [Some ISPs may strict with TLS connection requests(from your port 587) so use 465 to be safe] 
+export MAIL_PORT = "587" or "465"
 export MAIL_USERNAME = "senderEmail@gmail.com"
 export MAIL_PASSWORD = "yourAppPassword"
 export MAIL_RECEIVE = "receiverEmail"
