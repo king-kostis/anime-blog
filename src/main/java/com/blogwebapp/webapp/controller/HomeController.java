@@ -19,7 +19,7 @@ public class HomeController {
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
     private FeedService feedService;
 
-    @Value("rss.feed.url")
+    @Value("${rss.feed.url}")
     private String urlStr;
 
     public HomeController(FeedService feedService){
