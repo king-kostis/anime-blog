@@ -34,13 +34,15 @@ A blog website that displays anime news from a telegram channel using RSS feeds
 
 <br>
 
-### 1. Clone the Repository
+### 1. Fork the repository
+
+### 2. Clone the repository
 ```bash
 git clone https://github.com/king-kostis/anime-blog.git
 cd webapp
 ```
 
-### 2. Set environment variables
+### 3. Set environment variables
 
 ### Windows
 For temporary environment variables for testing(Lasts only during terminal session)
@@ -69,7 +71,7 @@ export MAIL_PASSWORD = "yourAppPassword"
 export MAIL_RECEIVE = "receiverEmail"
 ```
 
-### 2. Configure the application properties
+### 4. Configure the application properties
 Open `src/main/resources/application.properties` and set up mail configurations and rss url
 ```properties
 spring.mail.host = ${MAIL_HOST}
@@ -82,8 +84,9 @@ app.mail.receiver = ${MAIL_RECEIVE}
 rss.feed.url = yourRssFeedUrl.com
 ```
 
-### 3. Build and Run the App
+### 5. Build and run the app
 > Make sure you have maven installed or have its binaries path as a <em>PATH<em> variable.
+> The app runs on port 8080.
 
 ```bash
 mvn clean install
