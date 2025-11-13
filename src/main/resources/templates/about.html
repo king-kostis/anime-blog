@@ -3,31 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime News Blog</title>
+    <title>About</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <nav class="bg-black bg-opacity-70 text-white rounded-b p-3">
+
+    <!--Navigation bar-->
+    <nav class="bg-black fade-in-section bg-opacity-90 text-white rounded-b p-3">
         <div class="md:flex items-center justify-between">
             <div class="flex items-center justify-between mx-2 font-bold">
                 <img class="hover:scale-105 hover:cursor-pointer transition duration-300 ease-in-out rounded-full mr-4 w-12 h-12" th:src="@{/images/page_profile.jpg}"  alt="anime profile picture">
-                <span> <h1 style="font-family: 'Copperplate Gothic', Copperplate, fantasy, serif;"
+                <span><a th:href="@{/blog/feed}"><h1 style="font-family: 'Copperplate Gothic', Copperplate, fantasy, serif;"
                            class="hover:scale-105 transition duration-300 ease-in-out hover:cursor-pointer
                                text-4xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
                         Anime News
-                    </h1></span>
+                </h1></a></span>
 
 
                 <div class="md:hidden flex-cols ml-3">
-                    <button id="menuBtn">
+                    <button id="menuButton">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
 
-            <ul id="menu" class="md:flex hidden mt-0 ">
+            <ul id="menuItems" class="md:flex fade-in hidden mt-0 ">
                 <li class="mx-4 my-6 md:my-0"><a class="text-lg hover:text-blue-500 hover:cursor-pointer duration-500" th:href="@{/blog/feed}">Home</a></li>
                 <li class="mx-4 my-6 md:my-0"><a class="text-lg hover:text-blue-500 hover:cursor-pointer duration-500" th:href="@{/blog/about}">About</a></li>
                 <li class="mx-4 my-6 md:my-0"><a class="text-lg hover:text-blue-500 hover:cursor-pointer duration-500" th:href="@{/blog/contact}">Contact</a></li>
@@ -35,8 +37,49 @@
         </div>
     </nav>
 
+    <div class="justify-center my-3 mb-0 w-fit m-auto items-center min-h-screen bg-black bg-opacity-90 text-white px-6 py-8 rounded-2xl">
+        <h2 style="font-family: 'Copperplate Gothic', Copperplate, fantasy, serif;"
+            class="mb-6 pt-5 text-4xl text-center font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+            About the Author
+        </h2>
 
-    <footer class="bottom-0 w-full bg-black bg-opacity-80 text-white my-0 py-6 mt-10">
+        <p class="leading-relaxed mb-4 text-lg">
+            Hello! My name is <strong>Jesse Aaron Quartey</strong>, a third-year <strong>Data Science and Analytics</strong> student with a growing passion for backend development and software engineering.
+            This website is my first full-stack project — a simple but meaningful step in applying everything I’ve been learning on my own.
+        </p>
+
+        <p class="leading-relaxed mb-4 text-lg">
+            <strong>Anime News</strong> is an RSS-powered anime blog that automatically streams updates from a Telegram channel called <a class="text-blue-300 hover:text-blue-900" href="https://t.me/Anime_News4"><em>Anime News</em></a>.
+            The goal was to create something that connects my interest in anime with my excitement for building functional web applications.
+        </p>
+
+        <p class="leading-relaxed mb-4 text-lg">
+            The project was built using:
+        </p>
+        <ul class="list-disc list-inside mb-4 text-lg space-y-1">
+            <li><strong>Java Spring Boot</strong> – for backend logic and RSS feed processing</li>
+            <li><strong>Thymeleaf</strong> – as the template engine for dynamic and server-side rendering</li>
+            <li><strong>Tailwind CSS</strong> – for modern, responsive, and minimal styling</li>
+            <li><strong>HTML, CSS, and JavaScript</strong> – for structure, presentation, and interactivity</li>
+        </ul>
+
+        <p class="leading-relaxed mb-4 text-lg">
+            This application also includes an integrated <strong>email service</strong> that allows users to contact me directly through the app,
+            as well as an <strong>RSS feed parser</strong> that fetches and displays the latest anime-related news in real time.
+        </p>
+
+        <p class="leading-relaxed mb-4 text-lg">
+            This was a week-long project and I hope to improve on it in the future.
+        </p>
+
+        <p class="italic text-gray-400 mt-6 text-center">
+            Thank you for visiting the site.
+        </p>
+    </div>
+
+
+    <!--Footer-->
+    <footer class="bottom-0 fade-in-section w-full bg-black bg-opacity-90 text-white my-0 py-6 mt-10">
         <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
 
             <p class="text-sm mb-3 md:mb-0">
@@ -45,22 +88,11 @@
 
 
             <div class="flex space-x-4 text-lg">
-                <a href="#" class="hover:text-pink-400"><i class="fab fa-github"></i></a>
-                <a href="#" class="hover:text-pink-400"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/king-kostis?tab=repositories" class="hover:text-yellow-400 mr-3 text-4xl"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/jesse-quartey-3777722a5/" class="hover:text-blue-400 text-4xl"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </footer>
-
-<script>
-    const menu = document.getElementById('menu');
-    const btn = document.getElementById('menuBtn');
-
-    btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-    });
-</script>
-
-
-
+    <script th:src="@{/js/script.js}"></script>
 </body>
 </html>

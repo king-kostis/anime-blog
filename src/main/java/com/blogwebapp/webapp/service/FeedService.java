@@ -88,6 +88,13 @@ public class FeedService {
                     String title = element.getElementsByTagName("title").item(0).getTextContent();
                     String link = element.getElementsByTagName("link").item(0).getTextContent();
                     String description = element.getElementsByTagName("description").item(0).getTextContent();
+                    description =description.replaceAll(
+                            "<img\\s+[^>]*src\\s*=\\s*['\"](\\s*|null|https://rss\\.app/transparent\\.png)['\"][^>]*>",
+                            "");
+
+                    description = description.replaceAll(
+                            "<img[^>]*(width\\s*=\\s*['\"]?1['\"]?|height\\s*=\\s*['\"]?1['\"]?)[^>]*>",
+                            "");
                     String pubDate = element.getElementsByTagName("pubDate").item(0).getTextContent();
 
                     Feed feed = new Feed(title, description, pubDate, link);
