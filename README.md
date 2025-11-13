@@ -24,13 +24,13 @@ A blog website that displays anime news from a telegram channel using RSS feeds
 
 ## Setup & Installation
 > [!NOTE]
-> To receive emails from the app you first have to have <b>two google accounts</b> for this to work.<br><br>
-> One of the accounts should have an <b>App Password</b> which you can generate for your google account [here](https://myaccount.google.com/apppasswords).<br><br>
-> For more info or a guide on google app passswords you can check [here](https://support.google.com/mail/answer/185833?hl=en).<br><br>
-> Once the password is generated for whatever account you used, use it as the value for your <em>MAIL_PASSWORD</em> environment variable and use the gmail account you used to generate it as your <em>MAIL_USERNAME</em> value.<br><br>
-> Now you can use whatever personal email you have to receive the emails, hence it would be your <em>MAIL_RECEIVE</em> value.<br><br>
-> Sorry for the excessive steps but due to smtp is, I wanted to avoid any robust authenticatication for this small web app so I chose this round about way of sending emails the users of the app write to my self.<br><br>
-> So with these cautions in mind you can proceed with the installation.
+> - To receive emails from the app you first have to have <b>two google accounts</b> for this to work.<br><br>
+> - One of the accounts should have an <b>App Password</b> which you can generate for your google account [here](https://myaccount.google.com/apppasswords).<br><br>
+> - For more info or a guide on google app passswords you can check [here](https://support.google.com/mail/answer/185833?hl=en).<br><br>
+> - Once the password is generated for whatever account you used, use it as the value for your <em>MAIL_PASSWORD</em> environment variable and use the gmail account you used to generate it as your <em>MAIL_USERNAME</em> value.<br><br>
+> - Now you can use whatever personal email you have to receive the emails, hence it would be your <em>MAIL_RECEIVE</em> value.<br><br>
+> - Sorry for the excessive steps but due to smtp is, I wanted to avoid any robust authenticatication for this small web app so I chose this round about way of sending emails the users of the app write to my self.<br><br>
+> - So with these cautions in mind you can proceed with the installation.
 
 <br>
 
