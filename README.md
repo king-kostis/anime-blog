@@ -44,12 +44,6 @@ git clone https://github.com/king-kostis/anime-blog.git
 cd anime-blog
 ```
 
-> [!NOTE]
-> Some ISPs may be strict with TLS connection requests(from your port 587) so use 465 to be safe.<br><br>
-> If you still want to use port 587, set "<b><em>spring.mail.properties.mail.smtp.starttls.enable</em></b>" to "<b><em>true</em></b>"<br>
-> in your <b>application.properties</b> file.<br><br>
-> Then remove "<b><em>spring.mail.properties.mail.smtp.ssl.enable=true<em></b>".
-
 ### 2. Set environment variables
 
 ### Windows
@@ -92,6 +86,22 @@ app.mail.receiver = ${MAIL_RECEIVE}
 rss.feed.url = yourRssFeedUrl.xml
 ```
 
+> [!NOTE]
+> Some ISPs may be strict with TLS connection requests(from your port 587) so use 465 for MAIL_PORT to be safe.<br><br>
+> If you still want to use port 587, set "<b><em>spring.mail.properties.mail.smtp.starttls.enable</em></b>" to "<b><em>true</em></b>"<br>
+> in your <b>application.properties</b> file.<br><br>
+> Then remove "<b><em>spring.mail.properties.mail.smtp.ssl.enable=true</em></b>".<br>
+> Make sure <em>MAIL_PORT</em> is set to 587.
+```properties
+spring.mail.host = ${MAIL_HOST}
+spring.mail.port = ${MAIL_PORT}
+spring.mail.username = ${MAIL_USERNAME}
+spring.mail.password = ${MAIL_PASSWORD}
+spring.mail.properties.mail.smtp.starttls.enable=true
+app.mail.receiver = ${MAIL_RECEIVE}
+rss.feed.url = yourRssFeedUrl.xml
+```
+
 ### 4. Build and run the app
 > Make sure you have maven installed or have its binaries path as a <em>PATH<em> variable.
 > The app runs on port 3000. You can change it in the application.properties file.
@@ -104,6 +114,10 @@ then
 mvn spring-boot:run
 ```
 
+---
+
+## Future Plans
+- Dockerize app for deployment
 ---
 
 ## Author
