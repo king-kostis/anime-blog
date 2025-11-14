@@ -106,6 +106,8 @@ rss.feed.url = yourRssFeedUrl.xml
 > Make sure you have maven installed or have its binaries path as a <em>PATH<em> variable.
 > The app runs on port 3000. You can change it in the application.properties file.
 
+In your terminal enter:
+
 ```bash
 mvn clean install
 ```
