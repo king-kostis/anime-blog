@@ -53,11 +53,11 @@
 
                 <div class="items-center flex-cols w-full justify-center">
                     <div th:if="${param.success}" class="my-2">
-                        <p class="text-bold text-lg text-green-900">Email sent successful</p>
+                        <p class="text-bold text-sm text-green-900">Email sent successfully</p>
                     </div>
 
                     <div th:if="${param.error}" class="my-2">
-                        <p class="text-bold text-lg text-red-900">Sorry there was an error sending the email. Please try again and make sure you have entered the correct input</p>
+                        <p class="text-bold text-sm text-red-900">Error sending mail. Try again</p>
                     </div>
 
                     <div class="rounded-full w-fit text-white px-3 py-1 bg-black shadow-lg">
