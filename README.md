@@ -24,16 +24,14 @@ A blog website that displays anime news posts from a telegram channel using RSS 
 
 ## Setup & Installation
 > [!NOTE]
-> - You’ll need two Gmail accounts, preferrably of your own, to enable the email feature.
-> - One will act as the sender, and the other will receive messages.
-> - You’ll also need to generate a Google App Password for the sender account.
+> - You’ll need a Gmail account, to enable the email feature.  
+> - You’ll also need to generate a Google App Password for the account.
 > - For more info or a guide on google app passswords you can check [here](https://support.google.com/mail/answer/185833?hl=en).
 <br>
 
 ## Google App Password Setup
 - Generate your google app password [here](https://myaccount.google.com/apppasswords).
 - Set your gmail account as <em>MAIL_USERNAME</em> and the generated password as <em>MAIL_PASSWORD</em> as environment variables.
-- Set your personal email (the one you want to receive messages with) as <em>MAIL_RECEIVE</em>
   
 > I chose this setup to avoid the complexity of OAUTH authentication since this is a simple web app.
 > So with these steps done you can now proceed with the installation.
@@ -53,7 +51,6 @@ set MAIL_HOST = mailClient.smtp.com
 set MAIL_PORT = 587 or 465
 set MAIL_USERNAME = senderEmail@gmail.com.
 set MAIL_PASSWORD = yourAppPassword
-set MAIL_RECEIVE = receiverEmail
 ```
 For permanent environment variables
 ```bash
@@ -61,7 +58,6 @@ setx MAIL_HOST = mailClient.smtp.com
 setx MAIL_PORT = 587 or 465
 setx MAIL_USERNAME = senderEmail@gmail.com
 setx MAIL_PASSWORD = yourAppPassword
-setx MAIL_RECEIVE = receiverEmail
 ```
 
 ### Linux 
@@ -70,7 +66,6 @@ export MAIL_HOST = "mailClient.smtp.com"
 export MAIL_PORT = "587" or "465"
 export MAIL_USERNAME = "senderEmail@gmail.com"
 export MAIL_PASSWORD = "yourAppPassword"
-export MAIL_RECEIVE = "receiverEmail"
 ```
 
 ### 3. Configure the application properties
@@ -80,9 +75,10 @@ spring.mail.host = ${MAIL_HOST}
 spring.mail.port = ${MAIL_PORT}
 spring.mail.username = ${MAIL_USERNAME}
 spring.mail.password = ${MAIL_PASSWORD}
+spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.ssl.enable=true
 spring.mail.properties.mail.smtp.starttls.enable=false
-app.mail.receiver = ${MAIL_RECEIVE}
+app.mail.receiver = ${MAIL_USERNAME}
 rss.feed.url = yourRssFeedUrl.xml
 ```
 
@@ -97,8 +93,9 @@ spring.mail.host = ${MAIL_HOST}
 spring.mail.port = ${MAIL_PORT}
 spring.mail.username = ${MAIL_USERNAME}
 spring.mail.password = ${MAIL_PASSWORD}
+spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
-app.mail.receiver = ${MAIL_RECEIVE}
+app.mail.receiver = ${MAIL_USERNAME}
 rss.feed.url = yourRssFeedUrl.xml
 ```
 
