@@ -48,14 +48,14 @@ cd anime-blog
 For temporary environment variables for testing(Lasts only during terminal session)
 ```bash
 set MAIL_HOST = mailClient.smtp.com
-set MAIL_PORT = 587 or 465
+set MAIL_PORT = 465
 set MAIL_USERNAME = senderEmail@gmail.com.
 set MAIL_PASSWORD = yourAppPassword
 ```
 For permanent environment variables
 ```bash
 setx MAIL_HOST = mailClient.smtp.com
-setx MAIL_PORT = 587 or 465
+setx MAIL_PORT = 465
 setx MAIL_USERNAME = senderEmail@gmail.com
 setx MAIL_PASSWORD = yourAppPassword
 ```
@@ -63,7 +63,7 @@ setx MAIL_PASSWORD = yourAppPassword
 ### Linux 
 ```bash
 export MAIL_HOST = "mailClient.smtp.com"
-export MAIL_PORT = "587" or "465"
+export MAIL_PORT = "465"
 export MAIL_USERNAME = "senderEmail@gmail.com"
 export MAIL_PASSWORD = "yourAppPassword"
 ```
@@ -83,7 +83,6 @@ rss.feed.url = yourRssFeedUrl.xml
 ```
 
 > [!NOTE]
-> Some ISPs may be strict with TLS connection requests(from your port 587) so use 465 for MAIL_PORT to be safe.<br><br>
 > If you still want to use port 587, set "<b><em>spring.mail.properties.mail.smtp.starttls.enable</em></b>" to "<b><em>true</em></b>"<br>
 > in your <b>application.properties</b> file.<br><br>
 > Then remove "<b><em>spring.mail.properties.mail.smtp.ssl.enable=true</em></b>".<br>
