@@ -2,7 +2,7 @@ body {
     background-image: url('../images/cover_image.jpg');
     min-height: 100vh;
     background-position: center;
-    background-repeat: repeat;
+    background-repeat: none;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -26,15 +26,15 @@ body {
 }
 
 .fade-in-section {
-    opacity: 0; /* Initially hidden */
-    transform: translateY(20px); /* Optional: add a slight slide-up effect */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
-    will-change: opacity, transform; /* Performance optimization */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
 }
 
 .fade-in-section.is-visible {
-    opacity: 1; /* Fade in when in view */
-    transform: translateY(0); /* Move to original position */
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .feed-description img {
@@ -46,18 +46,11 @@ body {
   object-fit: cover;
 }
 
-.feed-description img[src="https://rss.app/transparent.png"],
-.feed-description img[src*="transparent.png"],
 .feed-description img[src=""],
 .feed-description img:not([src]) {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
-}
-
-body, html {
-    margin: 0;
-    padding: 0;
 }
 
 
