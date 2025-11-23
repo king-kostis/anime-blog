@@ -61,7 +61,7 @@ public class FeedService {
             //Overwrites data in the file after every save
             Files.writeString(filePath, feedsContent, StandardCharsets.UTF_8, StandardOpenOption.CREATE,
                     StandardOpenOption.TRUNCATE_EXISTING);
-            logger.info("Feeds stored successfully \n {}", feedsContent);
+            logger.info("Feeds stored successfully");
 
         } catch (Exception e){
             logger.error("Error. Could not store feeds: {}", e.getMessage());
