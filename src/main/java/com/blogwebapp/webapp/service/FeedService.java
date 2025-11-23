@@ -39,6 +39,7 @@ public class FeedService {
     private String imageUrl;
     @Value("${rss.feed.url}")
     private String feedUrlStr;
+    private static String imgUrl;
 
     public FeedService(List<Feed> feeds){
         this.feeds = new ArrayList<>();
@@ -80,7 +81,6 @@ public class FeedService {
             logger.debug("Parsing text to xml content");
             InputSource inputSource = new InputSource(new StringReader(content));
             Document doc = builder.parse(inputSource);
-
             //Normalizes xml content
             doc.getDocumentElement().normalize();
 
@@ -103,7 +103,7 @@ public class FeedService {
 
                     //Checks for url and assigns it to imageUrl if found
                     if(matcher.find()) {
-                        String imgUrl = matcher.group(1);
+                        imgUrl = matcher.group(1);
                         if (!isImageAvailable(imgUrl)) {
                             // Removes the image tag completely if url is not found or active
                             description = description.replaceAll("<img[^>]+src=[\"']" + Pattern.quote(imgUrl) + "[\"'][^>]*>", "");
@@ -125,7 +125,7 @@ public class FeedService {
     private static boolean isImageAvailable(String urlStr) {
         try {
             URL url = new URL(urlStr);
-            logger.info("Establishing connection to image URL ");
+            logger.info("Establishing connection to image URL: {}", imgUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("HEAD");
             logger.info("Connection established. Request has been sent");
