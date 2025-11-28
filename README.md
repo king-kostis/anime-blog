@@ -17,7 +17,7 @@ A blog website that displays anime news posts from a telegram channel using RSS 
 
 ## Tech Stack
 - **Language:** Java, HTML, CSS, JavaScript
-- **Frameworks:** Spring Boot, Thymeleaf
+- **Frameworks:** Spring Boot, Thymeleaf, Tailwind CSS
 - **Build Tool:** Maven
 
 ---
